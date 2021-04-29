@@ -18,11 +18,36 @@ const Home = () => {
    }
   }, [refresh]);
 
+  const handleDeleteMovie = (id) => {
+    const deleteMovie = async () => {
+      console.log(id)
+      try {
+        await moviesService.remove(id);
+        setRefresh(true);
+      } catch (error) {
+        console.log(error);
+        setRefresh(true)
+      } finally {
+        window.scroll(0, 0);
+      }
+    };
+    deleteMovie();
+  };
+
   return (
     <div className="container">
       <h2 className="text-center my-5">Nuestras películas (todo legal)</h2>
       <section className="row">
-          <Card/>
+        {
+          movies.map((movie) => (
+            <Card
+              movie={movie}
+              key={movie.id}
+              setRefresh={setRefresh}
+              handleDeleteMovie={handleDeleteMovie}
+            />
+          ))
+        }
       </section>
     </div>
   );

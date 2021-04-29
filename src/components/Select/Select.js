@@ -17,6 +17,7 @@ const Select = ({
             name={name}
             className={`form-select ${error ? 'input-error' : ''}`}
             defaultValue={defaultValue}
+            {...register(name, validation)}
             autoComplete="off"
             autoCorrect="off"
           >

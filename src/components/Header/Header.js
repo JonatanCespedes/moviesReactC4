@@ -10,10 +10,10 @@ const Header = ({ token, setToken }) => {
 
   const closeShow = () => setShow(false);
 
-/*   const handleLogout = () => {
+  const handleLogout = () => {
     window.localStorage.removeItem('_Token');
     setToken(null);
-  }; */
+  }; 
 
   return (
     <>
@@ -50,7 +50,7 @@ const Header = ({ token, setToken }) => {
                   text="Cerrar Sesión"
                   onClick={() => {
                     closeShow();
-                    /* handleLogout(); */
+                    handleLogout();
                   }}
                   className="btn btn-outline-light justify-self-end my-3 my-lg-0"
                 />

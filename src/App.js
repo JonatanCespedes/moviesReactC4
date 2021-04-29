@@ -14,12 +14,12 @@ import './App.css';
 const { PrivateRoute, PublicRoute } = AuthProvider;
 
 function App() {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(null);
 
   return (
     <>
       <Router>
-        <Header />
+        <Header token={token} setToken={setToken}/>
         <ScrollToTop>
           <div className="container main-container">
             <Switch>

@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 import Register from '../components/Register';
 import Login from '../components/Login';
 
-const Signin = () => {
+const Signin = (
+  {
+    setToken
+  }
+  ) => {
 
     const [signin, setSignin] = useState(true);
 
@@ -38,7 +42,7 @@ const Signin = () => {
           </p>
         )}
       </div>
-      {signin ? <Login/> : <Register/>}
+      {signin ? <Login setToken={setToken}/> : <Register setToken={setToken}/>}
             </div>
         </>
      );
