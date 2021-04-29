@@ -21,6 +21,7 @@ const Input = ({
           className={`form-control ${error ? 'input-error' : ''}`}
           placeholder={placeholder}
           defaultValue={defaultValue}
+          {...register(name, validation)}
           autoComplete="off"
           autoCorrect="off"
         />

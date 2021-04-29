@@ -11,10 +11,10 @@ import AuthProvider from './components/AuthProvider';
 import ScrollToTop from './components/ScrollToTop';
 import './App.css';
 
-
+const { PrivateRoute, PublicRoute } = AuthProvider;
 
 function App() {
-  const [token, setToken] = useState(null);
+  const [token, setToken] = useState(true);
 
   return (
     <>
@@ -23,17 +23,25 @@ function App() {
         <ScrollToTop>
           <div className="container main-container">
             <Switch>
-              <Route exact path="/">           
-                  <Home />     
+              <Route exact path="/"> 
+                <PrivateRoute token={token} setToken={setToken}>
+                  <Home />  
+                </PrivateRoute>                
               </Route>
-              <Route exact path="/edit/:id">         
+              <Route exact path="/edit/:id"> 
+                <PrivateRoute token={token} setToken={setToken}>
                   <Edit />
+                </PrivateRoute>           
               </Route>
-              <Route exact path="/create">  
-                  <Create />     
+              <Route exact path="/create">
+                <PrivateRoute token={token} setToken={setToken}>
+                  <Create />
+                </PrivateRoute>       
               </Route>
-              <Route exact path="/signin">  
-                  <Signin />
+              <Route exact path="/signin"> 
+                <PublicRoute token={token} setToken={setToken}>
+                  <Signin setToken={setToken}/>              
+                </PublicRoute> 
               </Route>
               <Route path="/*">
                 <NotFound />
